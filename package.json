@@ -21,6 +21,12 @@
   "homepage": "https://github.com/lenalurye/frontend-project-44#readme",
   "type": "module",
   "dependencies": {
+    "eslint-config-airbnb": "^19.0.4",
     "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1"
   }
 }
