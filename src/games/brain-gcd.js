@@ -1,4 +1,4 @@
-import { greeting, isAnswerCorrect } from './index.js';
+import { greeting, isAnswerCorrect } from '../index.js';
 
 const gcd = (number1, number2) => {
   let a = number1;

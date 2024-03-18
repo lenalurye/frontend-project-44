@@ -1,4 +1,4 @@
-import { greeting, isAnswerCorrect } from './index.js';
+import { greeting, isAnswerCorrect } from '../index.js';
 
 const calculate = (number1, operator, number2) => {
   switch (operator) {

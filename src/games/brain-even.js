@@ -1,4 +1,4 @@
-import { greeting, isAnswerCorrect } from './index.js';
+import { greeting, isAnswerCorrect } from '../index.js';
 
 const brainEven = () => {
   const name = greeting();
