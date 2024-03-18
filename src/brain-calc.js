@@ -1,5 +1,16 @@
 import { greeting, isAnswerCorrect } from './index.js';
 
+const calculate = (number1, operator, number2) => {
+  switch (operator) {
+    case '+':
+      return number1 + number2;
+    case '-':
+      return number1 - number2;
+    default: // тут eslint против третьего case и требует default. Здесь реализрван case с '*'
+      return number1 * number2;
+  }
+};
+
 const brainCalc = () => {
   const name = greeting();
   console.log('What is the result of the expression?');
@@ -12,18 +23,7 @@ const brainCalc = () => {
     const number2 = Math.floor(Math.random() * 100) + 1;
     const operators = ['+', '-', '*'];
     const randomOperator = operators[Math.floor(Math.random() * operators.length)];
-    let correctAnswer;
-    switch (randomOperator) {
-      case '+':
-        correctAnswer = number1 + number2;
-        break;
-      case '-':
-        correctAnswer = number1 - number2;
-        break;
-      default: // тут eslint против третьего case и требует default. Здесь реализрван case с '*'
-        correctAnswer = number1 * number2;
-        break;
-    }
+    const correctAnswer = calculate(number1, randomOperator, number2);
     const expression = `${number1} ${randomOperator} ${number2}`;
     if (isAnswerCorrect(name, expression, correctAnswer)) {
       rightAnswersCount += 1;
