@@ -1,6 +1,9 @@
 import { greeting, isAnswerCorrect } from '../index.js';
 
 const isPrime = (num) => {
+  if (num === 1) {
+    return false;
+  }
   const randomNumber = num;
   for (let i = 2; i < randomNumber; i += 1) {
     if (randomNumber % i === 0) {
