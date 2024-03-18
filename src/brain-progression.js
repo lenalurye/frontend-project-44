@@ -9,9 +9,7 @@ const brainProgression = () => {
 
   while (rightAnswersCount < 3 && wrongAnswerCount < 1) {
     const a1 = Math.floor(Math.random() * 75) + 1;
-    // Math.random возвращает от 0 до 1 не включительно.
-    // 5 - начальное значение. 10 - конечное.
-    const count = Math.floor(Math.random() * 6) + 5;
+    const count = Math.floor(Math.random() * 6) + 5; // Math.random возвращает от 0 до 1 не вкл.
     const d = Math.floor(Math.random() * 4) + 2;
 
     let progression = [];
