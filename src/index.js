@@ -1,7 +1,7 @@
 import askUser from './cli.js';
 
-export const rightAnswersToWin = 3;
-export const wrongAnswersToLose = 1;
+const rightAnswersToWin = 3;
+const wrongAnswersToLose = 1;
 
 export const greeting = () => {
   console.log('Welcome to the Brain Games!');
@@ -20,4 +20,21 @@ export const isAnswerCorrect = (name, question, correctAnswer) => {
   console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
   console.log(`Let's try again, ${name}!`);
   return false;
+};
+
+export const runGame = (name, makeProblem) => {
+  let rightAnswersCount = 0;
+  let wrongAnswerCount = 0;
+
+  while (rightAnswersCount < rightAnswersToWin && wrongAnswerCount < wrongAnswersToLose) {
+    const [question, correctAnswer] = makeProblem();
+    if (isAnswerCorrect(name, question, correctAnswer)) {
+      rightAnswersCount += 1;
+    } else {
+      wrongAnswerCount += 1;
+    }
+    if (rightAnswersCount === rightAnswersToWin) {
+      console.log(`Congratulations, ${name}!`);
+    }
+  }
 };

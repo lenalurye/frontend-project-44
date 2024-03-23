@@ -1,6 +1,4 @@
-import {
-  greeting, isAnswerCorrect, rightAnswersToWin, wrongAnswersToLose,
-} from '../index.js';
+import { greeting, runGame } from '../index.js';
 
 const makeProgression = (a1, count, d) => {
   const progression = [];
@@ -17,10 +15,7 @@ const brainProgression = () => {
   const name = greeting();
   console.log('What number is missing in the progression?');
 
-  let rightAnswersCount = 0;
-  let wrongAnswerCount = 0;
-
-  while (rightAnswersCount < rightAnswersToWin && wrongAnswerCount < wrongAnswersToLose) {
+  runGame(name, () => {
     const a1 = Math.floor(Math.random() * 75) + 1;
     const count = Math.floor(Math.random() * 6) + 5; // Math.random возвращает от 0 до 1 не вкл.
     const d = Math.floor(Math.random() * 4) + 2;
@@ -29,15 +24,7 @@ const brainProgression = () => {
     const correctAnswer = progression[index]; // записываем правильный ответ
     progression[index] = '..';
     progression = progression.join(' ');
-
-    if (isAnswerCorrect(name, progression, correctAnswer)) {
-      rightAnswersCount += 1;
-    } else {
-      wrongAnswerCount += 1;
-    }
-    if (rightAnswersCount === rightAnswersToWin) {
-      console.log(`Congratulations, ${name}!`);
-    }
-  }
+    return [progression, correctAnswer];
+  });
 };
 export default brainProgression;

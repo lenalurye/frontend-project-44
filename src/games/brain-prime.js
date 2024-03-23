@@ -1,6 +1,4 @@
-import {
-  greeting, isAnswerCorrect, rightAnswersToWin, wrongAnswersToLose,
-} from '../index.js';
+import { greeting, runGame } from '../index.js';
 
 const isPrime = (num) => {
   if (num === 1) {
@@ -19,21 +17,12 @@ const brainPrime = () => {
   const name = greeting();
   console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
 
-  let rightAnswersCount = 0;
-  let wrongAnswerCount = 0;
-
-  while (rightAnswersCount < rightAnswersToWin && wrongAnswerCount < wrongAnswersToLose) {
+  runGame(name, () => {
     const number = Math.floor(Math.random() * 101) + 1;
     const isNumberPrime = isPrime(number);
     const correctAnswer = isNumberPrime ? 'yes' : 'no'; // если число простое, то в correctAnswer запишется 'yes'. если нет - 'no'.
-    if (isAnswerCorrect(name, number, correctAnswer)) {
-      rightAnswersCount += 1;
-    } else {
-      wrongAnswerCount += 1;
-    }
-    if (rightAnswersCount === rightAnswersToWin) {
-      console.log(`Congratulations, ${name}!`);
-    }
-  }
+    return [number, correctAnswer];
+  });
 };
+
 export default brainPrime;
