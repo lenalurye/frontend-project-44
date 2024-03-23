@@ -6,7 +6,7 @@ const calculate = (number1, operator, number2) => {
       return number1 + number2;
     case '-':
       return number1 - number2;
-    default: // тут eslint против третьего case и требует default. Здесь реализрван case с '*'
+    default:
       return number1 * number2;
   }
 };
