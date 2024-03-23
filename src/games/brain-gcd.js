@@ -1,4 +1,6 @@
-import { greeting, isAnswerCorrect } from '../index.js';
+import {
+  greeting, isAnswerCorrect, rightAnswersToWin, wrongAnswersToLose,
+} from '../index.js';
 
 const gcd = (number1, number2) => {
   let a = number1;
@@ -21,7 +23,7 @@ const brainGcd = () => {
   let rightAnswersCount = 0;
   let wrongAnswerCount = 0;
 
-  while (rightAnswersCount < 3 && wrongAnswerCount < 1) {
+  while (rightAnswersCount < rightAnswersToWin && wrongAnswerCount < wrongAnswersToLose) {
     const a = Math.floor(Math.random() * 100) + 1;
     const b = Math.floor(Math.random() * 100) + 1;
     const question = `${a} ${b}`;
@@ -30,7 +32,7 @@ const brainGcd = () => {
     } else {
       wrongAnswerCount += 1;
     }
-    if (rightAnswersCount === 3) {
+    if (rightAnswersCount === rightAnswersToWin) {
       console.log(`Congratulations, ${name}!`);
     }
   }

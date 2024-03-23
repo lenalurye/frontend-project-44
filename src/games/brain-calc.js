@@ -1,4 +1,6 @@
-import { greeting, isAnswerCorrect } from '../index.js';
+import {
+  greeting, isAnswerCorrect, rightAnswersToWin, wrongAnswersToLose,
+} from '../index.js';
 
 const calculate = (number1, operator, number2) => {
   switch (operator) {
@@ -18,7 +20,7 @@ const brainCalc = () => {
   let rightAnswersCount = 0;
   let wrongAnswerCount = 0;
 
-  while (rightAnswersCount < 3 && wrongAnswerCount < 1) {
+  while (rightAnswersCount < rightAnswersToWin && wrongAnswerCount < wrongAnswersToLose) {
     const number1 = Math.floor(Math.random() * 100) + 1; // генерация случайного числа
     const number2 = Math.floor(Math.random() * 100) + 1;
     const operators = ['+', '-', '*'];
@@ -30,7 +32,7 @@ const brainCalc = () => {
     } else {
       wrongAnswerCount += 1;
     }
-    if (rightAnswersCount === 3) {
+    if (rightAnswersCount === rightAnswersToWin) {
       console.log(`Congratulations, ${name}!`);
     }
   }

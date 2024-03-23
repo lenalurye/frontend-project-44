@@ -1,4 +1,6 @@
-import { greeting, isAnswerCorrect } from '../index.js';
+import {
+  greeting, isAnswerCorrect, rightAnswersToWin, wrongAnswersToLose,
+} from '../index.js';
 
 const isPrime = (num) => {
   if (num === 1) {
@@ -20,7 +22,7 @@ const brainPrime = () => {
   let rightAnswersCount = 0;
   let wrongAnswerCount = 0;
 
-  while (rightAnswersCount < 3 && wrongAnswerCount < 1) {
+  while (rightAnswersCount < rightAnswersToWin && wrongAnswerCount < wrongAnswersToLose) {
     const number = Math.floor(Math.random() * 101) + 1;
     const isNumberPrime = isPrime(number);
     const correctAnswer = isNumberPrime ? 'yes' : 'no'; // если число простое, то в correctAnswer запишется 'yes'. если нет - 'no'.
@@ -29,7 +31,7 @@ const brainPrime = () => {
     } else {
       wrongAnswerCount += 1;
     }
-    if (rightAnswersCount === 3) {
+    if (rightAnswersCount === rightAnswersToWin) {
       console.log(`Congratulations, ${name}!`);
     }
   }

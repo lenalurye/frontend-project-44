@@ -1,5 +1,8 @@
 import askUser from './cli.js';
 
+export const rightAnswersToWin = 3;
+export const wrongAnswersToLose = 1;
+
 export const greeting = () => {
   console.log('Welcome to the Brain Games!');
   const name = askUser('May I have your name? ');
